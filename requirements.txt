@@ -1,0 +1,9 @@
+tensorflow==1.14.0
+tensorflow-gpu==1.14.0
+keras
+opencv
+h5py
+matplotlib
+PIL
+numpy
+pandas

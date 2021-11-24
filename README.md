@@ -1,1 +1,51 @@
 # HW2-SVHN-Detection
+
+## Introduction
+The Homework2 for NYCU CS Selected Topics in Visual Recognition using Deep Learning. In this homework, we use Google dataset **Streets View House Number(SVHN) format1**  to identify the house number on the street. This dataset contains 33,402 training images, 13,068 test images.
+
+I used Keras and YOLO3 to implement this project. Before training, I convert SVHN Dataset to PASCAL VOC Format, and then convert it to my own data format. After training, it will generate result meet the [COCO result](https://cocodataset.org/#format-results).
+
+## Environment
+- Ubuntu 20.04
+- Python 3.6.9
+- GeForce GTX 1080Ti
+- Cuda 10.1
+
+## Reproducing_submission
+To reproducing my submission, please follow the step below:
+1. Download the test dataset and move all images to directory **dataset/test**.
+2. Open inference.ipynb, and run all cells.
+3. The submission.zip will be generated.
+
+## Training
+In this part, I am used pre-trained model **yolov3.weights**
+To start training, please follow the steps below:
+1. Download train dataset, and move **digitStruct.mat** file and all images to the directory **dataset/train/data**.
+2. Download the pre-trained model.
+```
+wget https://pjreddie.com/media/files/yolov3.weights
+```
+3. Run the following command to produce PASCAL VOC Annotation Format.
+```
+$ python3 parse_matFile.py
+```
+4. Run the following command to generate txt file which contains image path and label.
+```
+$ python convert.py -w yolov3.cfg yolov3.weights model_data/yolo_weights.h5
+```
+5. Open train.ipynb, and run all cell.
+6. The best model weight will be generated in **logs/svhn_weights**.
+7. Open **inference.py** and replace **config** variable as follow:
+```
+config = {
+    "model_path": "logs/svhn_weights/{your_model_file_name}"
+}
+```
+6. [Start making inference](#Reproducing_submission)
+
+## Reference
+1. https://github.com/qqwweee/keras-yolo3
+2. https://keras.io/api/models/
+3. https://github.com/Yunyung/Object-Detector-on-SVHN-Datasets
+4. http://pjreddie.com/darknet/yolo/
+5. https://github.com/yan-roo/Digit-Detector-YOLOv3
