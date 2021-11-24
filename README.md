@@ -56,7 +56,7 @@ Root/
 
 ## Reproducing_submission
 To reproducing my submission, please follow the step below:
-1. Download the test dataset(format1) from [SVHN](http://ufldl.stanford.edu/housenumbers/), and then move all images to directory **dataset/test**.
+1. Download the test dataset(format1) from [SVHN](http://ufldl.stanford.edu/housenumbers/), and then move all images to directory **dataset/test**. (if the folder is missing, please create a folder)
 2. Download model from [here](https://drive.google.com/file/d/1NWA574VSHuws7JbeXZKNyX5Hy5mdeKVe/view?usp=sharing) and put model to folder **model_data**.
 3. Open inference.ipynb, and run all cells.
 4. The submission.zip will be generated.
@@ -64,12 +64,12 @@ To reproducing my submission, please follow the step below:
 ## Training
 In this part, I am used pre-trained model **yolov3.weights**
 To start training, please follow the steps below:
-1. Download train dataset(format1) from [SVHN](http://ufldl.stanford.edu/housenumbers/), and move **digitStruct.mat** file and all images to the directory **dataset/train/data**.
+1. Download train dataset(format1) from [SVHN](http://ufldl.stanford.edu/housenumbers/), and move **digitStruct.mat** file and all images to the directory **dataset/train/data**. (If the folder **data** is missing, please create a folder.)
 2. Download the pre-trained model.
 ```
 wget https://pjreddie.com/media/files/yolov3.weights
 ```
-3. Run the following command to produce PASCAL VOC Annotation Format.
+3. Run the following command to produce PASCAL VOC Annotation Format. (If the folder **annotation** is missing, please create a folder.)
 ```
 $ python3 parse_matFile.py
 ```
