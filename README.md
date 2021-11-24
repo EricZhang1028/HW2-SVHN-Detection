@@ -11,16 +11,56 @@ I used Keras and YOLO3 to implement this project. Before training, I convert SVH
 - GeForce GTX 1080Ti
 - Cuda 10.1
 
+## Project Structure
+```
+Root/
+    dataset
+    ├── train
+    |   ├── data
+    |   |   ├── 1.png
+    |   |   ├── 10.png
+    |   |   ├── ...
+    |   ├── annotation
+    |   |   ├── 1.xml
+    |   |   ├── 10.xml
+    |   |   ├── ...
+    ├── test
+    |   ├── 1.png
+    |   ├── 2.png
+    |   ├── ...
+    font
+    ├── FiraMono-Medium.otf
+    ├── SIL Open Font License.txt
+    model_data
+    ├── svhn_classes.txt
+    ├── yolo_anchors.txt
+    yolo3
+    ├── model.py
+    ├── utils.py
+    convert.py
+    LICENSE
+    parse_matFile.py
+    README.md
+    requirements.txt
+    yolo_video.py
+    yolo.py
+    yolov3.cfg
+    yolov3.weights
+    voc_annotation.py
+
+
+```
+
 ## Reproducing_submission
 To reproducing my submission, please follow the step below:
-1. Download the test dataset and move all images to directory **dataset/test**.
+1. Download the test dataset(format1) from [SVHN](http://ufldl.stanford.edu/housenumbers/), and then move all images to directory **dataset/test**.
 2. Open inference.ipynb, and run all cells.
 3. The submission.zip will be generated.
 
 ## Training
 In this part, I am used pre-trained model **yolov3.weights**
 To start training, please follow the steps below:
-1. Download train dataset, and move **digitStruct.mat** file and all images to the directory **dataset/train/data**.
+1. Download train dataset(format1) from [SVHN](http://ufldl.stanford.edu/housenumbers/), and move **digitStruct.mat** file and all images to the directory **dataset/train/data**.
 2. Download the pre-trained model.
 ```
 wget https://pjreddie.com/media/files/yolov3.weights
@@ -31,17 +71,21 @@ $ python3 parse_matFile.py
 ```
 4. Run the following command to generate txt file which contains image path and label.
 ```
-$ python convert.py -w yolov3.cfg yolov3.weights model_data/yolo_weights.h5
+$ python voc_annotation.py
 ```
-5. Open train.ipynb, and run all cell.
-6. The best model weight will be generated in **logs/svhn_weights**.
-7. Open **inference.py** and replace **config** variable as follow:
+5. Run the following command to generate th pre-trained weight from **yolov3.weights**
+```
+python convert.py -w yolov3.cfg yolov3.weights model_data/yolo_weights.h5
+```
+6. Open train.ipynb, and run all cell.
+7. The best model weight will be generated in **logs/svhn_weights**.
+8. Open **inference.py** and replace **config** variable as follow:
 ```
 config = {
     "model_path": "logs/svhn_weights/{your_model_file_name}"
 }
 ```
-6. [Start making inference](#Reproducing_submission)
+9. [Start making inference](#Reproducing_submission)
 
 ## Reference
 1. https://github.com/qqwweee/keras-yolo3
