@@ -69,6 +69,7 @@ wget https://pjreddie.com/media/files/yolov3.weights
 ```
 $ python3 parse_matFile.py
 ```
+If got the error like "TypeError: 'NoneType' object is not subscriptable", then run the above command again.
 4. Run the following command to generate txt file which contains image path and label.
 ```
 $ python voc_annotation.py

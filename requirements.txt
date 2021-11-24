@@ -1,9 +1,10 @@
 tensorflow==1.14.0
 tensorflow-gpu==1.14.0
-keras
-opencv
-h5py
+keras==2.3.1
+opencv-python
+h5py==2.9.0
 matplotlib
-PIL
-numpy
+Pillow
+numpy==1.16.0
 pandas
+tables
