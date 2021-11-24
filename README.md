@@ -5,6 +5,9 @@ The Homework2 for NYCU CS Selected Topics in Visual Recognition using Deep Learn
 
 I used Keras and YOLO3 to implement this project. Before training, I convert SVHN Dataset to PASCAL VOC Format, and then convert it to my own data format. After training, it will generate result meet the [COCO result](https://cocodataset.org/#format-results).
 
+## Bench Mark
+Please click [here](https://colab.research.google.com/drive/1wQXYzRpMPIPyA7vzpSkLRgAqhk9FWnB1?usp=sharing).
+
 ## Environment
 - Ubuntu 20.04
 - Python 3.6.9
@@ -54,8 +57,9 @@ Root/
 ## Reproducing_submission
 To reproducing my submission, please follow the step below:
 1. Download the test dataset(format1) from [SVHN](http://ufldl.stanford.edu/housenumbers/), and then move all images to directory **dataset/test**.
-2. Open inference.ipynb, and run all cells.
-3. The submission.zip will be generated.
+2. Download model from [here](https://drive.google.com/file/d/1NWA574VSHuws7JbeXZKNyX5Hy5mdeKVe/view?usp=sharing) and put model to folder **model_data**.
+3. Open inference.ipynb, and run all cells.
+4. The submission.zip will be generated.
 
 ## Training
 In this part, I am used pre-trained model **yolov3.weights**
@@ -70,6 +74,7 @@ wget https://pjreddie.com/media/files/yolov3.weights
 $ python3 parse_matFile.py
 ```
 If got the error like "TypeError: 'NoneType' object is not subscriptable", then run the above command again.
+
 4. Run the following command to generate txt file which contains image path and label.
 ```
 $ python voc_annotation.py
